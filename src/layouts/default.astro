@@ -1,0 +1,51 @@
+---
+const { version } = Astro.props;
+import { Icon } from 'astro-icon'
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Earth v{version}</title>
+    <meta property="og:title" content="Earth v{version}" />
+    <meta property="og:description" content="Patchnotes for Earth v{version}" />
+    <meta property="og:image" content="https://media4.giphy.com/media/mf8UbIDew7e8g/200w.gif?cid=6c09b952zw52iodwpg1734okd4xyos56jjznqslyg1tka3cn&rid=200w.gif&ct=g" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+          background-color: #0d1116;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="flex flex-col items-center justify-center h-screen">
+        <h1 class="text-4xl text-white">Earth v{version}</h1>
+        <div class="text-xl px-5 w-full md:w-1/2 text-center text-white mt-2">
+            <slot />
+        </div>
+
+        <div class="absolute bottom-0 left-0 right-0 text-center mb-5">
+          <a class="text-white text-3xl text-center" href="https://astro.build">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a class="text-white text-3xl text-center" href="https://astro.build">
+            <i class="fa-solid fa-list"></i>
+          </a>
+          <a class="text-white text-3xl text-center" href="https://astro.build">
+            <i class="fa-solid fa-plus"></i>
+          </a>
+        </div>
+    </div>
+    
+    <script type="module">
+        import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+        setTimeout(function() {
+          confetti.create(document.getElementById('canvas'), {
+              resize: true,
+              useWorker: true
+          })({ particleCount: 50, spread: 200 })
+        }, 250);
+    </script>
+  </body>
+</html>
