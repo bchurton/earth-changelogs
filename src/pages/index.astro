@@ -1,13 +1,13 @@
 ---
-import Layout from "../layouts/default.astro";
+import Changelog from "../layouts/Changelog.astro";
 import { latestChangelog } from "../utils";
 const { added, removed, version } = latestChangelog();
 ---
-<Layout version={version}>
+<Changelog version={version}>
     {added.map((item, i) => (
         <p class="text-green-300">+ {item}</p>
     ))}
     {removed.map((item, i) => (
         <p class="text-red-300">- {item}</p>
     ))}
-</Layout>
+</Changelog>

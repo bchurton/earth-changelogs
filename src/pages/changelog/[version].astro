@@ -1,0 +1,19 @@
+---
+import Changelog from "../../layouts/Changelog.astro";
+import { getChangelog } from "../../utils";
+const changelog = getChangelog(Astro.params.version);
+console.log(changelog);
+if (!changelog) {
+    return Astro.redirect('/list');
+}
+const { version, added, removed } = changelog;
+
+---
+<Changelog version={version}>
+    {added.map((item, i) => (
+        <p class="text-green-300">+ {item}</p>
+    ))}
+    {removed.map((item, i) => (
+        <p class="text-red-300">- {item}</p>
+    ))}
+</Changelog>

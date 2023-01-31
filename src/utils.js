@@ -21,5 +21,5 @@ export function getChangelog(version) {
 
 export function listChangelogs() {
     const changelogFiles = fs.readdirSync(join(__dirname, '/changelogs'));
-    return changelogFiles.map(file => file.replace('.json', ''));
+    return changelogFiles.filter(file => file.match(/^\d+\.\d+\.\d+\.json$/)).map(file => file.replace('.json', '')).sort().reverse();
 }

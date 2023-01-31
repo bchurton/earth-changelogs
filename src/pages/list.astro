@@ -1,0 +1,13 @@
+---
+import ListChangelogs from "../layouts/ListChangelogs.astro";
+import { listChangelogs } from "../utils";
+const changelogs = listChangelogs();
+console.log(changelogs)
+---
+<ListChangelogs>
+    {changelogs.map((changelog) => (
+        <a href={`/changelog/${changelog}`} class="block">
+            v{changelog}
+        </a>
+    ))}
+</ListChangelogs>
