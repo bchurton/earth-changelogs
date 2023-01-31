@@ -7,7 +7,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export function latestChangelog() {
-    console.log(__dirname);
     const changelogFiles = fs.readdirSync(join(__dirname, '/changelogs'));
     const latestChangelog = changelogFiles.sort().reverse()[0];
     const changelog = JSON.parse(fs.readFileSync(join(__dirname, `/changelogs/${latestChangelog}`), 'utf8'));
